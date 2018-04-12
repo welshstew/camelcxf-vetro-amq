@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sim="http://www.example.org/SimpleSchema/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sim:SomeOperationResponse>
+            <out>ERROR</out>
+        </sim:SomeOperationResponse>
+    </soapenv:Body>
+</soapenv:Envelope>

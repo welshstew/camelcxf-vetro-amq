@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/SimpleSchema/" targetNamespace="http://www.example.org/SimpleSchema/">
+	<element name="SomeOperation" type="tns:SomeType"></element>
+
+	<complexType name="SomeType">
+		<sequence minOccurs="1">
+			<element name="SomeString" type="string"></element>
+			<element name="SomeDate" type="date"></element>
+			<element name="SomeInteger" type="int"></element>
+			<element name="Status" type="anyType" minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<complexType name="SomeStatus">
+		<sequence minOccurs="1">
+			<element name="SomeStatusCode" type="string"/>
+			<element name="SomeStatusDescription" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="SomeOperationResponse">
+		<complexType>
+			<sequence>
+				<element name="out" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

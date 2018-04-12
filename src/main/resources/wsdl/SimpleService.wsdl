@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/SimpleService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SimpleService" targetNamespace="http://www.example.org/SimpleService/" xmlns:xsd1="http://www.example.org/SimpleSchema/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/SimpleService/">
+      <xsd:element name="NewOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.example.org/SimpleSchema/"
+                  schemaLocation="SimpleSchema.xsd">
+      </xsd:import>
+</xsd:schema></wsdl:types>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part element="tns:NewOperation" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part element="tns:NewOperationResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SomeOperationRequest">
+    <wsdl:part name="parameters" element="xsd1:SomeOperation"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SomeOperationResponse">
+    <wsdl:part name="parameters" element="xsd1:SomeOperationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse1">
+    <wsdl:part name="parameters" element="tns:NewOperationResponse1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SimpleService">
+    <wsdl:operation name="NewOperation">
+      <wsdl:input message="tns:NewOperationRequest"/>
+      <wsdl:output message="tns:NewOperationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SomeOperation">
+      <wsdl:input message="tns:SomeOperationRequest"></wsdl:input>
+      <wsdl:output message="tns:SomeOperationResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NewBinding" type="tns:SimpleService">
+    <soap:binding style="document"
+                  transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="NewOperation">
+      <soap:operation
+              soapAction="http://www.example.org/SimpleService/NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SomeOperation">
+      <soap:operation
+              soapAction="http://www.example.org/SimpleService/SomeOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SimpleService">
+    <wsdl:port binding="tns:NewBinding" name="SimpleServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

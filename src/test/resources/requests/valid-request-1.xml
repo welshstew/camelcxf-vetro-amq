@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sim="http://www.example.org/SimpleSchema/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sim:SomeOperation>
+            <SomeString>?</SomeString>
+            <SomeDate>2010-11-11</SomeDate>
+            <SomeInteger>111</SomeInteger>
+        </sim:SomeOperation>
+    </soapenv:Body>
+</soapenv:Envelope>
